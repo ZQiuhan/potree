@@ -1,5 +1,6 @@
 
 import * as THREE from "../libs/three.js/build/three.module.js";
+import {BinaryHeap} from "./BinaryHeap.js";
 import {Points} from "./Points.js";
 
 export class ProfileData {

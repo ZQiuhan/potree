@@ -1,4 +1,20 @@
+import path from 'path';
+
+const threeModule = path.resolve('libs/three.js/build/three.module.js');
+
 export default [
+	{
+		input: 'src/Trinity.js',
+		treeshake: false,
+		external: id => id === threeModule,
+		output: {
+			file: 'build/potree/potree.trinity.js',
+			format: 'umd',
+			name: 'Potree',
+			globals: {[threeModule]: 'THREE'},
+			sourcemap: true,
+		}
+	},
 	{
 		input: 'src/Potree.js',
 		treeshake: false,

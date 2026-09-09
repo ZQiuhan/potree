@@ -2,6 +2,7 @@
 import * as THREE from "../libs/three.js/build/three.module.js";
 import {ClipTask, ClipMethod} from "./defines.js";
 import {Box3Helper} from "./utils/Box3Helper.js";
+import {BinaryHeap} from "./BinaryHeap.js";
 
 export function updatePointClouds(pointclouds, camera, renderer){
 
