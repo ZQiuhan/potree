@@ -7,8 +7,9 @@ import {OctreeGeometry, OctreeGeometryNode} from "./OctreeGeometry.js";
 
 export class NodeLoader{
 
-	constructor(url){
+	constructor(url, fetcher = globalThis.fetch.bind(globalThis)){
 		this.url = url;
+		this.fetcher = fetcher;
 	}
 
 	async load(node){
@@ -46,7 +47,7 @@ export class NodeLoader{
 				buffer = new ArrayBuffer(0);
 				console.warn(`loaded node with 0 bytes: ${node.name}`);
 			}else{
-				let response = await fetch(urlOctree, {
+				let response = await this.fetcher(urlOctree, {
 					headers: {
 						'content-type': 'multipart/byteranges',
 						'Range': `bytes=${first}-${last}`,
@@ -250,7 +251,7 @@ export class NodeLoader{
 		let first = hierarchyByteOffset;
 		let last = first + hierarchyByteSize - 1n;
 
-		let response = await fetch(hierarchyPath, {
+		let response = await this.fetcher(hierarchyPath, {
 			headers: {
 				'content-type': 'multipart/byteranges',
 				'Range': `bytes=${first}-${last}`,
@@ -384,14 +385,14 @@ export class OctreeLoader{
 		return attributes;
 	}
 
-	static async load(url){
+	static async load(url, fetcher = globalThis.fetch.bind(globalThis)){
 
-		let response = await fetch(url);
+		let response = await fetcher(url);
 		let metadata = await response.json();
 
 		let attributes = OctreeLoader.parseAttributes(metadata.attributes);
 
-		let loader = new NodeLoader(url);
+		let loader = new NodeLoader(url, fetcher);
 		loader.metadata = metadata;
 		loader.attributes = attributes;
 		loader.scale = metadata.scale;
