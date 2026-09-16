@@ -14,24 +14,6 @@ export default [
 			globals: {[threeModule]: 'THREE'},
 			sourcemap: true,
 		}
-	},
-	{
-		input: 'src/Potree.js',
-		treeshake: false,
-		output: {
-			file: 'build/potree/potree.js',
-			format: 'umd',
-			name: 'Potree',
-			sourcemap: true,
-		}
-	},{
-		input: 'src/workers/BinaryDecoderWorker.js',
-		output: {
-			file: 'build/potree/workers/BinaryDecoderWorker.js',
-			format: 'es',
-			name: 'Potree',
-			sourcemap: false
-		}
 	},{
 		input: 'src/modules/loader/2.0/DecoderWorker.js',
 		output: {

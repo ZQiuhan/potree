@@ -2,7 +2,7 @@
   "name": "potree",
   "private": true,
   "version": "1.8.0",
-  "description": "WebGL point cloud viewer",
+  "description": "Trinity Potree point-cloud rendering runtime",
   "keywords": [
     "point",
     "cloud",
@@ -15,10 +15,10 @@
     "browser",
     "tool"
   ],
-  "main": "./build/potree/potree.js",
+  "main": "./build/potree/potree.trinity.js",
   "scripts": {
     "start": "gulp watch",
-    "build": "gulp build pack",
+    "build": "gulp release",
     "postinstall": "npm run build"
   },
   "dependencies": {

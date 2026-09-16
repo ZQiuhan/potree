@@ -4,7 +4,6 @@ export * from "./modules/loader/2.0/OctreeLoader.js";
 export * from "./PointCloudOctree.js";
 export * from "./Potree_update_visibility.js";
 export {Renderer} from "./PotreeRenderer.js";
-export * from "./ProfileRequest.js";
 
 import {LRU} from "./LRU.js";
 import {WorkerPool} from "./WorkerPool.js";
@@ -27,5 +26,4 @@ if (document.currentScript && document.currentScript.src) {
 	}
 }
 
-let resourcePath = scriptPath + "/resources";
-export {scriptPath, resourcePath};
+export {scriptPath};
